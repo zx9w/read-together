@@ -30,7 +30,7 @@ Basic idea:
   - The paper
   - Ideally a shell.nix with all communication software preconfigured
   - The readme that explains format of meeting, lists participants and states decisions made in the issue, the issue can be closed once consensus has formed around the readme.
-- When the meeting is finished you can add the annotated paper and any notes or images that were produced over the meeting.
+- When the meeting is finished you can add the annotated paper and any notes or images that were produced over the meeting to the pull request.
 
 For recurring meetings a format like this can be used:
 ```
