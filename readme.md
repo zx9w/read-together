@@ -66,6 +66,8 @@ Profile                  -- your pseudonym / real name
 ```
 You can also put the wishlists in the readme but it can be easier to manage when you have different files for different topics.
 
+Feel free to sign your readme and include a public key in your profile folder.
+
 
 # Inspiration
 
