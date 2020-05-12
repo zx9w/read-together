@@ -50,7 +50,11 @@ I had a cheeky idea to merge when goals are met (in line with the scientific met
 
 ## How to participate
 
-Some groups may use email or something similar to keep joining details private while leaving the artefacts and organization public (by committing them to this repo). This is totally fine since it's important to keep everyone on the same page and momentum may be lost when bringing in new people. However don't let this discourage you from opening an issue, maybe those same people will be willing to participate in other new groups.
+Just make an issue or join a group that meets publicly.
+
+Some groups may use email or something similar to keep joining details private - while leaving the artefacts and organization public (by committing them to this repo). This is totally fine since it's important to keep everyone on the same page and momentum may be lost when bringing in new people.
+
+However don't let this discourage you from opening an issue, maybe those same people will be willing to participate in other new groups.
 
 ### Adding a Profile
 
