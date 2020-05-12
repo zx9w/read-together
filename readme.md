@@ -73,6 +73,7 @@ Feel free to sign your readme and include a public key in your profile folder.
 
 If you are looking for a place to start then here are some places that aggregate papers about haskell and type theory:
 
+- https://paperswelove.org/
 - ##dependent on freenode, their repo: https://github.com/dpndnt/library
 - https://github.com/cohomolo-gy/haskell-resources
 - https://mitchellwrosen.github.io/haskell-papers/
