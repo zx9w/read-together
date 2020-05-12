@@ -1,6 +1,6 @@
 # Overview
 
-It is good to study in groups; ask questions, asking questions and in general testing understanding. However, it is hard to organize reading groups, especially when the topic is very specific.
+It is good to study in groups; getting asked questions, asking questions and in general testing understanding is conducive to learning. However, it is hard to organize reading groups, especially when the topic is very specific.
 
 The goal of this repository is to organize such groups and then as a side-effect of meeting we can collaboratively document our process making it easier for others to get started.
 
