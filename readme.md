@@ -44,7 +44,7 @@ Paper                    -- name of paper
 
 Of course you are free to deviate from this structure but please document your process and treat the readme like a constitution (respecting "higher" readmes). This makes it easier for others to benefit from your ideas.
 
-### Mergin Pull Requests
+### Merging Pull Requests
 
 I had a cheeky idea to merge when goals are met (in line with the scientific method, predefine conditions for failure so that the experiment can be unbiased). The group would come up with the goals themselves and merging is the "job well done" ceremony. If you don't have any goals for the meeting then merging can be done at any time.
 
