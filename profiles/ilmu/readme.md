@@ -3,7 +3,10 @@
 Hi, I'm obsessed with lattices and event structures. Interested in cryptography and programming language theory.
 
 Timezone: Berlin
+
 Availability: Evenings, Weekends
+
+Contact: ilmu on freenode (and some other places)
 
 # Papers
 
