@@ -1,0 +1,70 @@
+# Overview
+
+It is good to study in groups; ask questions, asking questions and in general testing understanding. However, it is hard to organize reading groups, especially when the topic is very specific.
+
+The goal of this repository is to organize such groups and then as a side-effect of meeting we can collaboratively document our process making it easier for others to get started.
+
+
+# Getting started
+
+The basic idea is to use github issues for suggesting papers to read, organizing meeting dates and meta-comments (improving this document etc.) 
+
+The actual meetings manifest as pull requests, first with the concrete decisions made in the issue collected into a readme as well as the canonical version of the paper to read. Then once the meeting takes place any artefacts from the meeting can be collected into the PR.
+
+Normally the issue can be closed once the pull request has been opened since it means that the readme is ready.
+
+
+
+## How to host a meeting
+
+Basic idea:
+
+- Create an issue for the paper you want to read, once interest develops some decisions will be made.
+  - When to meet.
+  - Precondition(s) for participation (if any).
+  - Goal(s) (if any).
+  - Communication channels for bootstrapping meetings and general async communication (IRC, email, scuttlebutt, activitypub, matrix).
+  - Tools to communicate during meeting:  drawpile, mumble and codimd are good tools (annotate pdfs, while talking and writing notes with latex - all synchronous).
+  - Staking or some other way to signal commitment can also be agreed on but should not be needed in most cases.
+- Then create a pull request for the meeting, the pull request should have a folder with:
+  - The paper
+  - Ideally a shell.nix with all communication software preconfigured
+  - The readme that explains format of meeting, lists participants and states decisions made in the issue, the issue can be closed once consensus has formed around the readme.
+- When the meeting is finished you can add the annotated paper and any notes or images that were produced over the meeting.
+
+For recurring meetings a format like this can be used:
+```
+Paper                    -- name of paper
+├── paper.pdf            -- The paper
+├── shell.nix            -- The necessary software to participate
+├── readme.md            -- The decisions mentioned above
+├── group-meeting1       -- A directory containing a readme and meeting artefacts
+└── group-meeting2       -- group is arbitrary id, allows many groups to discuss the same paper.
+```
+
+Of course you are free to deviate from this structure but please document your process and treat the readme like a constitution. This makes it easier for others to benefit from your ideas.
+
+## How to participate
+
+Some groups may use email or something similar to keep joining details private while leaving the artefacts and organization public (by committing them to this repo). This is totally fine since it's important to keep everyone on the same page and momentum may be lost when bringing in new people. However don't let this discourage you from opening an issue, maybe those same people will be willing to participate in other new groups.
+
+### Adding a Profile
+
+Make a pull request adding a folder to `Profiles/`
+```
+Profile                  -- your pseudonym / real name
+├── readme.md            -- an introduction with relevant details to reading CS papers.
+└── wishlist1.md          -- a list of papers you'd like to read or topics you want to study.
+```
+You can also put the wishlists in the readme but it can be easier to manage when you have different files for different topics.
+
+
+# Inspiration
+
+If you are looking for a place to start then here are some places that aggregate papers about haskell and type theory:
+
+- ##dependent on freenode, their repo: https://github.com/dpndnt/library
+- https://github.com/cohomolo-gy/haskell-resources
+- https://mitchellwrosen.github.io/haskell-papers/
+- https://github.com/beerendlauwers/haskell-papers-ereader
+- https://wiki.haskell.org/Research_papers
