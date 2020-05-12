@@ -58,11 +58,11 @@ However don't let this discourage you from opening an issue, maybe those same pe
 
 ### Adding a Profile
 
-Make a pull request adding a folder to `Profiles/`
+Make a pull request adding a folder to `profiles/`
 ```
 Profile                  -- your pseudonym / real name
 ├── readme.md            -- an introduction with relevant details to reading CS papers.
-└── wishlist1.md          -- a list of papers you'd like to read or topics you want to study.
+└── wishlist1.md         -- a list of papers you'd like to read or topics you want to study.
 ```
 You can also put the wishlists in the readme but it can be easier to manage when you have different files for different topics.
 
