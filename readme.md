@@ -29,7 +29,7 @@ Basic idea:
 - Then create a pull request for the meeting, the pull request should have a folder with:
   - The paper
   - Ideally a shell.nix with all communication software preconfigured
-  - The readme that explains format of meeting, lists participants and states decisions made in the issue, the issue can be closed once consensus has formed around the readme.
+  - The readme that explains format of meeting, technical howto (joining etc.), lists participants or requirements for participation and in general serves as the authoritative document for decisions made in the issue that spawned the pull request.
 - When the meeting is finished you can add the annotated paper and any notes or images that were produced over the meeting to the pull request.
 
 For recurring meetings a format like this can be used:
