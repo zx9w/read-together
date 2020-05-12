@@ -7,11 +7,11 @@ The goal of this repository is to organize such groups and then as a side-effect
 
 # Getting started
 
-The basic idea is to use github issues for suggesting papers to read, organizing meeting dates and meta-comments (improving this document etc.) 
+The basic idea is to use github issues for suggesting papers to read (as well as organizing meeting dates and meta-comments such as improving this document or the structure of our collaboration etc.) 
 
-The actual meetings manifest as pull requests, first with the concrete decisions made in the issue collected into a readme as well as the canonical version of the paper to read. Then once the meeting takes place any artefacts from the meeting can be collected into the PR.
+The actual meetings manifest themselves as pull requests; first with the concrete decisions made in the issue collected into a readme as well as the canonical version of the paper to read. Then once the meeting takes place any artefacts from the meeting can be collected into the PR.
 
-Normally the issue can be closed once the pull request has been opened since it means that the readme is ready.
+Normally the issue can be closed once the pull request has been opened since it means that the readme is almost ready.
 
 
 
@@ -38,11 +38,11 @@ Paper                    -- name of paper
 ├── paper.pdf            -- The paper
 ├── shell.nix            -- The necessary software to participate
 ├── readme.md            -- The decisions mentioned above
-├── group-meeting1       -- A directory containing a readme and meeting artefacts
-└── group-meeting2       -- group is arbitrary id, allows many groups to discuss the same paper.
+├── group-meeting1       -- A directory containing a readme with e.g. goals and then meeting artefacts
+└── group-meeting2       -- group is some arbitrary id, allows many groups to discuss the same paper concurrently
 ```
 
-Of course you are free to deviate from this structure but please document your process and treat the readme like a constitution. This makes it easier for others to benefit from your ideas.
+Of course you are free to deviate from this structure but please document your process and treat the readme like a constitution (respecting "higher" readmes). This makes it easier for others to benefit from your ideas.
 
 ## How to participate
 
