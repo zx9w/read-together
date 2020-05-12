@@ -9,9 +9,9 @@ The goal of this repository is to organize such groups and then as a side-effect
 
 The basic idea is to use github issues for suggesting papers to read (as well as organizing meeting dates and meta-comments such as improving this document or the structure of our collaboration etc.) 
 
-The actual meetings manifest themselves as pull requests; first with the concrete decisions made in the issue are collected into a readme (and the canonical version of the paper is added as well). Then once the meeting takes place any artefacts from the meeting can be collected into the PR.
+The actual meetings manifest themselves as pull requests; first, the concrete decisions made in the issue are collected into a readme (and the canonical version of the paper is added as well). Then, once the meeting takes place, any artefacts from the meeting can be collected into the PR.
 
-Normally the issue can be closed once the pull request has been opened since it means that the readme is almost ready.
+Normally the issue can be closed once the pull request has been opened since it means that the readme is almost ready (and the focus is always anchored to a readme).
 
 
 
