@@ -82,4 +82,5 @@ If you are looking for a place to start then here are some places that aggregate
 - https://mitchellwrosen.github.io/haskell-papers/
 - https://github.com/beerendlauwers/haskell-papers-ereader
 - https://wiki.haskell.org/Research_papers
+- distributed systems: https://heather.miller.am/teaching/cs7680/
 
