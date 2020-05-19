@@ -32,6 +32,8 @@ Basic idea:
   - A readme that explains the format of the meeting, technical howto (joining etc.), lists participants or requirements for participation and in general serves as the authoritative document for decisions made in the issue that spawned the pull request.
 - When the meeting is finished you can add the annotated paper and any notes or images that were produced over the meeting to the pull request.
 
+If you already have a group or are just going to be reading the paper no matter what then you can skip straight to making a pull request with your decisions (among which must be information for joining).
+
 For recurring meetings a format like this can be used:
 ```
 Paper                    -- name of paper
