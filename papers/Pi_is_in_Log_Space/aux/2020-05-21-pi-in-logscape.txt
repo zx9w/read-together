@@ -1,0 +1,299 @@
+[09:59:42] [connected at Thu May 21 09:59:42 2020]
+[09:59:56] [I have joined #readtogether]
+[10:00:04] <abetusk> This channel is logged
+[18:15:06] <ilmu> hey
+[18:15:16] <ilmu> I'm omw home now
+[18:45:36] <abetusk> hey ilmu, let me know when you're ready
+[18:58:45] <ilmu> thanks I had a kind of weird evening and just got connected
+[18:58:56] <ilmu> how do you want to do this?
+[18:59:12] <ilmu> i already looked a bit at the paper, do youwant toimplement it?
+[18:59:35] <ilmu> what got you interested in these spigot algos btw?
+[18:59:43] <abetusk> well, I was hoping to talk a bit before we get started to set some expectations. I would prefer to do it over irc with the latex editor for scratch but if you find that too limiting we can try voice or video
+[19:01:04] <abetusk> Uh, well, initially LLL was used by Plouffe to get the original spigot algorithm for pi, so it was kind of a highlight of the lattice reduction techniques. In general, the spigot algorithms are an example of an algorithm that has an exponential speedup over the "naive" method
+[19:01:11] <ilmu> sounds good, irc + doc sounds good and we can do it a bit async (but active) over this weekend
+[19:01:19] <abetusk> ah, great
+[19:01:48] <abetusk> and paperlogpot is logging on my local server. I pushed the pythons script I'm using for it to the repo if you want to take a look, but as far as I can tell, it's pretty simple
+[19:02:36] <ilmu> yeah I saw your pr, grewt idea
+[19:03:06] <abetusk> I don't feel like I have a good "forest from the trees" birds eye view but the spigot algorithms kind of exist in the constellation of concepts of generating functions, fourier transforms, algebraic number theory, etc. so I think they're worth knowing
+[19:03:43] <ilmu> yeah I'm interested in an eventual cryptography pivot
+[19:04:25] <ilmu> right now it's all distributed systeme ad math for me so I haven't looked at these algos
+[19:04:51] <abetusk> yeah, so I'd be hard pressed to find a direct connection but, in some very tangential way, this stuff is kind of related to lattice reduction, which of course has a lot of traction in crypto
+[19:04:52] <ilmu> sec I'm getting on a PC, still in my phone
+[19:05:00] <abetusk> no prob
+[19:05:48] <ilmu> yeah also being able to index into digits is a interesting capability from many perspectives
+[19:08:54] <abetusk> From my perspective, I kind of like to know about the algorithms that give exponential speedups, especially when the speedup is non-trivial
+[19:09:47] <ilmu> a thing I've been tginking about reading is the riscV ISA
+[19:11:45] <abetusk> hm, ok
+[19:12:01] <ilmu> ok doc in pc
+[19:12:58] <abetusk> cool
+[19:13:04] <abetusk> If it's not a good time we can also reschedule
+[19:13:38] <ilmu> l,
+[19:13:41] <ilmu> ok and im in
+[19:14:14] <abetusk> ok, so if you don't mind, can we discuss some expectations and the kind of 'plan of attack'?
+[19:14:35] <ilmu> no please take the lead
+[19:15:50] <abetusk> so, I can, in general, follow the low level mechanics of the proofs, enough to recreate them on my own, given enough practice and time, but the goal, for me, is to get a bit of a higher level motivation so that I understand *why* things are being done rather than just how to do them
+[19:16:20] <abetusk> I'm also ignorant of some analytic number theory, which is maybe why I don't follow some of the higher level reasoning that may be obvious to someone better trained
+[19:16:26] <abetusk> so that's my first goal.
+[19:17:06] <abetusk> The second is to at least get an idea of what the underlying algorithm is to create the provably correct spigot algorithm and how to use it for other spigot algorithms, not just for pi, which I think is the main focus of the paper
+[19:18:04] <ilmu> yeah so I read the paper and I could follow roughly
+[19:18:21] <abetusk> do you have a sense for some motivation for the irrationality measure?
+[19:18:26] <ilmu> the problem was that they use some identities that I had to work out to convince myself but I haven't done that yet (rewritin thsoe sums)
+[19:19:02] <ilmu> I'm not sure I know what you mean by 'irrationality measure'
+[19:19:11] <abetusk> It's defined in the paper...
+[19:19:18] <ilmu> haha
+[19:19:21] <ilmu> sorry
+[19:20:06] <ilmu> okay intriguing
+[19:20:07] <abetusk> no prob
+[19:20:50] <ilmu> mhm okay so we use this metric and get some space
+[19:22:01] <abetusk> I'm abusing notation, probably...
+[19:22:07] <abetusk> just trying to get a succinct statement
+[19:22:24] <ilmu> it's fine, you just say if this set of pairs is finite
+[19:22:53] <abetusk> I was trying to look for it, but there's some result about irrational numbers converging faster than rational numbers
+[19:23:17] <abetusk> I think it's related to the irrationality measure? Like I said, I don't have a good sense of the motivation for it
+[19:24:05] <ilmu> hmmmm
+[19:24:15] <ilmu> okay goog;le
+[19:25:07] <ilmu> ah okay I know something adjacent
+[19:28:08] <abetusk> https://mathworld.wolfram.com/LiouvillesApproximationTheorem.html
+[19:28:23] <ilmu> yep I'm reading this
+[19:28:39] <ilmu> okay so the thing you were writing is this with the infimum
+[19:31:13] <abetusk> There's a few different ways to say it but basically it's saying that alpha can't be represented "too closely" by a rational, with "too closely" being no closer than q^{-n}
+[19:32:04] <ilmu> okay wow that is a headache inducing condition but I get it
+[19:32:06] <abetusk> where n is essentially the degree of the algrebaic number...but of course for non-algebraic numbers, they also (sometimes?) have an irrationality measure
+[19:32:31] <ilmu> what about that theorem that between each two rational numbers there is an irrational and vice versa
+[19:32:48] <ilmu> doesn't it mean you can always find a rational in the interval you choose
+[19:33:42] <abetusk> The author of this paper, Chee Yap, put a book out a while back that's pretty good. That's where I found the Louiville trail. I have a copy if you want to take a look: https://github.com/abetusk/papers/blob/release/books/Fundamental-Problems-in-Algorithmic-Algebra.pdf
+[19:34:32] <abetusk> there's a power, 'n', that comes into play?
+[19:35:10] <abetusk> and it's tied to the rational approximation...
+[19:36:31] <ilmu> okay so this book is good
+[19:37:16] <ilmu> in fact it's excellent
+[19:37:19] <abetusk> right, so, say you have alpha and beta, to irrational numbers, you can find p/q between them...but who cares. |alpha - p/q| > q^{-n} still
+[19:37:20] <ilmu> have you read it?
+[19:37:27] <abetusk> yeah, good book. It's how I learned LLL
+[19:37:46] <abetusk> not all of it...I think I haven't read the Grobner bases chapter
+[19:37:53] <ilmu> aha okay I get it now
+[19:37:56] <abetusk> as well as some other chapters
+[19:38:17] <ilmu> yeah it's always like this, but these gaps fill in organically if you keep interacting with others
+[19:39:18] <ilmu> okay so when is M infinite?
+[19:39:46] <abetusk> yeah, very excellent. This is Chee Yaps wheelhouse, I think, filling in the details to make provably correct algorithms. One of the first chapters is on probably polynomial fourier-like transforms for number multiplication. Anyway, yeah, can't recommend it enough
+[19:40:30] <ilmu> I'll take a look over the weekend
+[19:40:43] <abetusk> I guess by reducing the irrationality measure? Meaning, you tune the K down so that you get all these rational approximations that fall within some 'ball'
+[19:41:13] <ilmu> ahh okay so you have these conflicting goals of keeping the set finite but K small
+[19:41:27] <abetusk> look, I'm just regurgitating, I don't really understand it. I know what words to use but that's one of the things I was was hoping for...a better understanding of what the irrationality measure is
+[19:41:50] <ilmu> lets rubber duck it a bit more
+[19:41:56] <abetusk> yeah, sure
+[19:42:12] <ilmu> in my experience math is something you get used to before you understand it
+[19:42:19] <abetusk> sometimes
+[19:42:59] <abetusk> sometimes you get used to it without ever understanding. Sometimes the intuition/motivation is what drives you to understand
+[19:43:12] <ilmu> okay and the tail of the series we use to approximate can be cut off when it doesnt ruin our measure
+[19:43:38] <abetusk> this is the remainder sum later on in the paper?
+[19:43:38] <ilmu> yeah for me I get used to things without understanding them, I know thats kind of bad but I get things done a lot of the time :)
+[19:44:02] <ilmu> other things I feel I understand so well
+[19:44:15] <ilmu> but am absolutely useless when it comes to applying them
+[19:45:04] <ilmu> (I'm really into formal methods and theorem proving because it sets me free to explore - and get used to things - while also making sure I don't burn the house down)
+[19:48:08] <ilmu> man I didn't read this very thoroughly earlier, the first theorem is really amazing when I think about it
+[19:50:05] <abetusk> yeah, I think what it's saying is that if we know the irrationality measure of a number (or if it exists?) and we know of a BBP-like series, even if we don't know whether it has round-off issues, we can 'bootstrap' into a provably good BBP-like series that spits out digits
+[19:51:26] <abetusk> oh right, this is where I originally heard of this paper: https://rjlipton.wordpress.com/2010/07/14/making-an-algorithm-an-algorithm-bbp/
+[19:51:45] <ilmu> thanks
+[19:55:26] <ilmu> wow this is a whole world of things
+[19:55:36] <ilmu> and it's right up my alley, all he's saying in this post resonates
+[19:56:53] <ilmu> yeah I see now, okay
+[19:57:13] <ilmu> so this irrationality measure is both key to this working at all and a really hard equation to solve
+[19:57:39] <ilmu> so can we try to implement an irrationality measure?
+[19:57:46] <ilmu> what is your language of choice?
+[19:58:14] <abetusk> C, Python, Javascript. Not Java, not Lisp and not Haskell, please
+[19:58:26] <ilmu> what about zig or rust?
+[19:58:47] <abetusk> I've never heard of zig and I don't really know rust. I would also prefer to stay away from Go
+[19:58:59] <abetusk> you?
+[19:59:37] <ilmu> so I'd prefer to avoid garbage collector
+[19:59:51] <ilmu> but I'm afraid of C >.<
+[19:59:55] <ilmu> but why not
+[20:00:06] <ilmu> zig is kinda cool though
+[20:00:07] <abetusk> well, good news is we get us mpfr if we need it
+[20:00:37] <abetusk> so, this will only give us numerical evidence for irrationality measure and not anything "provable"
+[20:00:50] <abetusk> unless you know something I don't
+[20:01:03] <ilmu> yes I understand, also he uses it to move from the real numbers to the computer so it's kind of useless as a program
+[20:01:16] <ilmu> (if I understand correctly)
+[20:01:55] <ilmu> I'm just wondering how it is computed
+[20:02:02] <ilmu> do you iterate on K from the bottom?
+[20:02:12] <ilmu> what is the failure condition to go to the next K
+[20:02:15] <ilmu> ?
+[20:03:20] <abetusk> the way I would do this is to iterate on the denominator, q, find p to most closely match, then plot the difference as a function of q. Do a log-log plot, which will have power laws become linear, and then fit the slope to the line to figure out what the power law is
+[20:03:46] <ilmu> hmm okay so js / python makes sense then
+[20:04:19] <ilmu> maybe python notebook?
+[20:04:25] <ilmu> we can probably share one from somewhere
+[20:05:43] <abetusk> you can only get numerical evidence because there's the 'only for finite many' or 'some constant only dependent on alpha'
+[20:05:48] <abetusk> sure, whatever works
+[20:06:05] <abetusk> And I was just shooting from the hip, I might be wrong about the formulation, don't take my word as gospel
+[20:06:58] <abetusk> yeah, we're probably going to quickly need an arbitrary precision package (which conveniently python has I believe). We could also really rough it and do it in 'bc'
+[20:07:15] <ilmu> bc?
+[20:07:37] <abetusk> https://www.gnu.org/software/bc/manual/html_mono/bc.html
+[20:08:48] <ilmu> lol oof
+[20:09:02] <ilmu> python sounds better. I'm on some windows pc I borrowed
+[20:09:08] <abetusk> ok
+[20:09:46] <ilmu> but the jupyterhub thing needs a server
+[20:09:55] <ilmu> I'm not set up for that, maybe in a few weeks
+[20:12:15] <ilmu> the alternative form is counterintuitive for me
+[20:12:22] <ilmu> how do you choose C?
+[20:12:47] <ilmu> and what is n there?
+[20:15:06] <abetusk> It's just a constant, essentially. n is the degree of the algebraic number (and who knows when alpha isn't algebraic). It's saying alpha is always badly approximated by p/q by q^{-n} but that details for p/q might be 'noisy', so choose the numerator in q^{-n} large (or small) enough so that we can say 'for all p,q' instead of 'for finite p,q'
+[20:16:35] <ilmu> okay
+[20:17:10] <ilmu> that was a very good explanation
+[20:17:44] <abetusk> My intuition for this stuff is that a lot of these numbers behave randomly. The digits of pi are essentially random. When looking at some sequence of random numbers, like in a random walk, say, they jump around and might be large, compared to 0, say, but as you keep looking at it, eventually the chance of it deviating from whatever distribution it's subject to get smaller and smaller
+[20:18:15] <ilmu> yep like a sorting algorithm
+[20:18:19] <abetusk> I may be butchering this analogy but there are many cases when we basically say "throw out the 'head' and look at the tail"
+[20:18:41] <ilmu> in the blog post he made that sorting analogy
+[20:19:09] <ilmu> and what you said also fits, when the list is very unsorted you have lots of jumps and then as you sort the list the convergence to zero gets more apparent
+[20:19:10] <abetusk> uh, you mean the graham algorithm?
+[20:19:50] <ilmu> yes, but more generally I just mean how convergence in a computer is essentially sorting
+[20:20:23] <abetusk> I don't follow
+[20:20:38] <ilmu> maybe I'm way off base :)
+[20:20:47] <abetusk> https://math.stackexchange.com/questions/55263/motivation-of-irrationality-measure
+[20:22:03] <abetusk> ok, well, anyway, I'm not sure I'm going to get a satisfactory answer on the motivation for the irrationality measure but I do have some leads...Liouville, Dirchlet approximation, etc. It's been well studied so I'm sure I can find a line on some intuition that will make sense to me at some point
+[20:22:43] <ilmu> yeah I'm following liouville
+[20:23:30] <ilmu> I'm sorry I'd like to be more helpful but this is really not my background
+[20:24:07] <ilmu> I did do a complex analysis course and I remember liouvilles theorem but it's not clear yet what is going on
+[20:25:01] <ilmu> ah maybe it's the other one
+[20:25:51] <abetusk> but the basic concept is this: if you have an algebraic number of degree n and try to approximate it by a rational p/q, it's always bigger than 1/q^n.
+[20:26:11] <abetusk> yeah, no problem, this is not my background at all, so I'm just trying to muddle through myself
+[20:26:17] <ilmu> yeah I already got that idea, it's easy to grasp but what is not clear is how to compute it
+[20:26:20] <ilmu> or solve the equation
+[20:26:52] <ilmu> the degree of the algebraic number is btw a genius way to do this
+[20:27:04] <ilmu> it's exactly the correct information to create the bound mathgasm
+[20:27:20] <abetusk> hehe, I still don't have a sense
+[20:29:56] <abetusk> what I do find interesting is that the bound is for algebraic numbers and presumably they're integral, but for non-algebraic numbers, at least some of them have bounded irrationality measure. It's probably no coincedence that the pi BBP formula has degree approxmiately 8 and the irrationality measure is also 'around' 8...which is maybe what you were just implying
+[20:30:50] <ilmu> well that's generous haha
+[20:33:19] <ilmu> but yes checks out
+[20:34:05] <abetusk> in some sense, it's like pi is like an algebraic number but 'in-between' degree 6 and 8, say
+[20:34:14] <abetusk> anyway, this is maybe not that helpful
+[20:34:21] <abetusk> what are we blocking on now, a server or something?
+[20:34:42] <ilmu> no I guess not, we can just put code in the codi and run it locally..
+[20:36:51] <abetusk> this will run there?
+[20:37:14] <abetusk> oh, sorry, I see
+[20:37:15] <ilmu> no
+[20:37:23] <abetusk> gmpy2 is the package for multi-precision, I guess
+[20:37:36] <ilmu> thx
+[20:40:36] <ilmu> now I'm knee deep in documentation :p
+[20:40:52] <abetusk> https://gmpy2.readthedocs.io/en/latest/mpfr.html#contexts-and-the-with-statement
+[20:41:17] <ilmu> ok yes useful
+[20:47:28] <abetusk> ha, well, that's not very useful
+[20:48:24] <abetusk> hm, maybe I should try with something simpler to begin with, like sqrt(2) instead of pi
+[20:49:45] <ilmu> so should this converge?
+[20:50:18] <abetusk> I mean, it depends on what you mean
+[20:50:49] <ilmu> what are the different ways I could mean it xD
+[20:50:52] <abetusk> it's saying that as q->infty, the lower bound of the difference doesn't go below the q^{-n} 'line'
+[20:51:02] <ilmu> yeah okay
+[20:51:14] <ilmu> but pi is not algebraic right?
+[20:51:22] <ilmu> omg I need to read a lot
+[20:51:24] <abetusk> the digits of these numbers are essentially a random process
+[20:51:33] <ilmu> yes that much I know
+[20:51:51] <abetusk> yes, pi is not algebraic (it's the root of an 'infinite' polynomial, not a finite one)
+[20:52:07] <ilmu> yes okay 
+[20:52:08] <abetusk> but I bet we see the same thing for sqrt(2)...which I will do now
+[20:52:51] <abetusk> I'm not sure if it's an artifact of the precision or whether it's real, but there look to be 'waves' of the "error" getting closer
+[20:52:59] <abetusk> ...it might be the precision, we need to be careful
+[20:53:12] <abetusk> let's take a look at sqrt(2) to see what it looks like
+[20:53:23] <ilmu> okay
+[20:53:32] <ilmu> yeah I also noticed the waves
+[20:54:11] <abetusk> yeah, that looks better
+[20:55:19] <abetusk> can we upload pictures to codimd?
+[20:55:36] <ilmu> maybe?
+[20:55:42] <ilmu> yeah looks like we can
+[20:55:47] <ilmu> codimd is freakin amazing
+[20:56:04] <ilmu> sqrt2 also waves for me
+[20:57:03] <abetusk> yeah, so maybe they're real? I dunno
+[20:57:31] <abetusk> ahh...I'm still skeptical
+[20:57:46] <ilmu> that's great! good for you
+[20:58:09] <ilmu> never accept things easily and you will understand things much better
+[20:58:43] <abetusk> ok, so my precision is set to 1000, which means that 2^500 is the limit
+[20:59:00] <ilmu> I set mine to 10000 because I'm just using some notebook
+[20:59:18] <abetusk> my q range is from 1 to 100000, which is not even pushing the limits of double
+[20:59:25] <abetusk> yeah, so those waves are probably real
+[20:59:52] <abetusk> anyway, maybe it's well know, I don't know, but that's probably something interesting to see the period of the waves
+[21:00:09] <abetusk> oh, it might have to do with continues fraction convergents...
+[21:00:26] <abetusk> though I think that's also not well understood...but I'm certainly no expert so I wouldn't trust me
+[21:00:48] <ilmu> continuous fraction convergents
+[21:00:54] <ilmu> > google
+[21:01:01] <abetusk> sorry, continued fractions
+[21:01:10] <abetusk> it's also in yaps book
+[21:01:20] <ilmu> okay
+[21:01:23] <ilmu> this exrpession
+[21:01:37] <ilmu> yeah this is indeed a nightmare to compute
+[21:01:49] <ilmu> they have some convergence property?
+[21:02:07] <abetusk> the 'convergence' is that all that bouncing around never crosses the line underneath
+[21:02:12] <abetusk> at least after some point
+[21:02:24] <ilmu> aha okay
+[21:02:25] <abetusk> this is all the 'for finite p,q' or for 'some C(alpha)'
+[21:02:36] <ilmu> mhm okay I get it
+[21:02:39] <ilmu> or this
+[21:04:24] <abetusk> yeah, so pi is order 6,7 or above, so we need to really sample out at the edge before we see a pattern. sqrt(2) is nice because it's quadratic
+[21:04:30] <ilmu> ffr: en.wikipedia.org/wiki/Continued_fraction
+[21:04:46] <ilmu> yeah I saw the table in the wiki article
+[21:05:05] <ilmu> so the degree affects the size of the computation?
+[21:05:31] <abetusk> of the spigot algorithm?
+[21:05:41] <ilmu> sorry its kind of a stupid question
+[21:06:08] <abetusk> don't worry about it, just trying to understand what you're asking
+[21:06:19] <ilmu> the degree K is an input somewhere
+[21:06:40] <ilmu> I guess, what is downstream, or affected by the degree
+[21:07:50] <ilmu> oh wow the motivation of the continued fraction in the wiki article is making it clear to me this thing you said earlier
+[21:08:01] <ilmu> about the head and the tail
+[21:08:55] <ilmu> what happens if we use the golden ratio?
+[21:11:07] <abetusk> uh, not sure what you mean about the head/tail for continued fractions...I was just trying to make a general statement.
+[21:11:25] <abetusk> the golden ratio is the 'degenerate' case for continued fractions, with it being '1' all over the place
+[21:12:08] <ilmu> how does that affect the irrationality measure?
+[21:12:31] <ilmu> it shouldnt
+[21:12:47] <abetusk> for some 'pop math', it's why we see rings of saturn obey golden ratio distances, because it's "more resilient to chaos". Some process somewhere is doing the euclidean algorithm and the 'worst case' is when the numbers only have a quotient of 1
+[21:13:11] <abetusk> yeah, I think the irrationality measure is wholly dependent on the degree of the algebraic number...in the case of golden ratio, just 2
+[21:13:48] <ilmu> nice visualization
+[21:13:58] <abetusk> you're cs?
+[21:14:03] <ilmu> (with the rings of saturn)
+[21:14:20] <ilmu> cs?
+[21:14:25] <abetusk> computer science
+[21:14:33] <ilmu> ah I only did a bachelor so far
+[21:14:35] <ilmu> did math and cs
+[21:14:55] <ilmu> but I graduated with math, I was a course short of a full cs degree
+[21:15:05] <ilmu> but most of what I read is type theory and plt
+[21:15:22] <ilmu> currently applying to do more math
+[21:17:12] <abetusk> ok, so worst case for avl trees (or is it red-black?) is so-called fibonacci tree
+[21:17:29] <abetusk> ..not sure if you learned about self balancing trees or not
+[21:17:34] <ilmu> I did
+[21:17:44] <abetusk> sorry, maybe this is to far afield...just trying to bring it back home to something you might have seen
+[21:17:56] <ilmu> thanks :)
+[21:18:19] <abetusk> fibonacci tree -> ratio of fibonacci numbers = golden ratio -> 'worst case' avl -> 'worst case' continued fractions
+[21:18:24] <ilmu> it's also just 3am and I'm a bit cooked from the sun all day :p
+[21:18:39] <abetusk> yeah, no worrie
+[21:18:40] <abetusk> s
+[21:18:56] <ilmu> okay I understand
+[21:19:02] <abetusk> yeah, that irrationality plot is weird for pi
+[21:19:10] <abetusk> anyway, probably something interesting there, who knows
+[21:19:20] <ilmu> can you add it to the doc?
+[21:19:34] <abetusk> yeah, sure, let me do this latest plot
+[21:21:21] <abetusk> getting back to your earlier question..I'm having trouble confirming but I think the matrix construction does depend on the irrationality measure. The number of columns, m, I think is essentially K (or ceil(K) or something)
+[21:21:42] <abetusk> if you take a look at pg7 in the paragraph before 'Remarks'
+[21:21:44] <ilmu> duuude that makes sense
+[21:22:33] <abetusk> My current suspicion (and hope) is that the irrationality measure basically tells you what the maximum degree polynomial is for the spigot algorithm
+[21:23:10] <ilmu> yeah so you find the bound on how much space you need to compute the digit precisely
+[21:23:19] <ilmu> it's like some kind of filter
+[21:23:31] <abetusk> yeah...essentially I think
+[21:23:37] <abetusk> I mean, all this needs to be confirmed
+[21:23:41] <ilmu> ofc
+[21:25:01] <ilmu> m = max{7,2(K-1)n+4}
+[21:27:50] <abetusk> there, pi posted
+[21:28:15] <ilmu> whoa
+[21:28:19] <ilmu> wtf
+[21:30:42] <abetusk> yea... l(10000000)/l(2) = 23.253496664 ... so even at 8*23, that's only like about 200 or so
+[21:34:24] <ilmu> okay I must sleep now
+[21:34:40] <abetusk> ok, well thanks for working through this with me
+[21:34:54] <ilmu> this was fun, I will read up a bit, look especially at that book
+[21:35:28] <abetusk> yeah, that book is great.
+[21:35:52] <ilmu> also I'm going to ask some people I know about this irrationality measure
+[21:35:55] <abetusk> If you want to continue with this paper, let me know
+[21:36:11] <abetusk> Yeah, maybe it'd be helpful to see the proof by Liouville or others
+[21:36:13] <ilmu> I am down, just need a bit more foundation
+[21:36:18] <ilmu> yes I think so!
+[21:36:20] <abetusk> sure, sounds good
+[21:36:48] <ilmu> I've always been a bit uneasy with the reals, I want to see constructive approaches
+[21:37:07] <abetusk> well, yaps book is for you then
+[21:37:09] <ilmu> I've been working up to topos theory and this is a very fresh perspective that I can benefit from
+[21:37:25] <ilmu> okayokay gn :) ciao
+[21:37:29] <abetusk> ok night
+[21:49:12] <abetusk> https://planetmath.org/DirichletsApproximationTheorem
