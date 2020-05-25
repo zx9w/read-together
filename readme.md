@@ -77,12 +77,13 @@ Communities
 
 - https://paperswelove.org/
 
-If you are looking for a place to start then here are some places that aggregate papers about haskell and type theory:
+If you are looking for a place to start then here are some places that aggregate papers:
 
-- ##dependent on freenode, their repo: https://github.com/dpndnt/library
-- https://github.com/cohomolo-gy/haskell-resources
-- https://mitchellwrosen.github.io/haskell-papers/
-- https://github.com/beerendlauwers/haskell-papers-ereader
-- https://wiki.haskell.org/Research_papers
+- Haskell and type theory:
+  - ##dependent on freenode, their repo: https://github.com/dpndnt/library
+  - https://github.com/cohomolo-gy/haskell-resources
+  - https://mitchellwrosen.github.io/haskell-papers/
+  - https://github.com/beerendlauwers/haskell-papers-ereader
+  - https://wiki.haskell.org/Research_papers
 - distributed systems: https://heather.miller.am/teaching/cs7680/
 - algorithmic botany (very cool!): http://algorithmicbotany.org/papers/
