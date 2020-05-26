@@ -88,3 +88,4 @@ If you are looking for a place to start then here are some places that aggregate
 - distributed systems: https://heather.miller.am/teaching/cs7680/
 - crdts: https://crdt.tech/papers.html
 - algorithmic botany (very cool!): http://algorithmicbotany.org/papers/
+- best papers by year: https://jeffhuang.com/best_paper_awards.html
